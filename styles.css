@@ -42,7 +42,7 @@ button:hover {
     background-color: #0056b3;
 }
 
-#result {
+#result, #aiResult {
     margin-top: 20px;
     padding: 20px;
     background-color: #e9f7ef;
