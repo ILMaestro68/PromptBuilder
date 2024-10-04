@@ -3,47 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerador de Prompts</title>
+    <title>Gerador de Prompts Completo</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Gerador de Prompts</h1>
 
-    <div class="prompt-form">
-        <label for="characterDescription">Descrição Física da Personagem:</label>
-        <select id="characterDescription">
-            <option value="alto">Alto</option>
-            <option value="baixo">Baixo</option>
-            <option value="atlético">Atlético</option>
-            <option value="robusto">Robusto</option>
+<div class="container">
+    <h1>Gerador de Prompts Completo</h1>
+
+    <!-- Tipo de Mídia -->
+    <div class="question">
+        <label for="mediaType">Tipo de Mídia:</label>
+        <select id="mediaType">
+            <option value="digital image">Imagem Digital</option>
+            <option value="short video">Vídeo Curto</option>
         </select>
-        <textarea id="characterCustomDescription" placeholder="Descrição personalizada..."></textarea>
+        <textarea id="mediaTypeExtra" rows="2" placeholder="Detalhes adicionais para o tipo de mídia..."></textarea>
+    </div>
 
-        <label for="cameraPosition">Posição da Câmara:</label>
+    <!-- Estilo Visual -->
+    <div class="question">
+        <label for="visualStyle">Estilo Visual:</label>
+        <select id="visualStyle">
+            <option value="Pixar teenager">Pixar Teenager</option>
+            <option value="Realistic">Realista</option>
+            <option value="Digital Art">Arte Digital</option>
+            <option value="Anime">Anime</option>
+            <option value="Cartoon">Cartoon</option>
+        </select>
+        <textarea id="visualStyleExtra" rows="2" placeholder="Detalhes adicionais para o estilo visual..."></textarea>
+    </div>
+
+    <!-- Nome do Personagem -->
+    <div class="question">
+        <label for="character">Nome do Personagem Principal:</label>
+        <input type="text" id="character" placeholder="Nome do Personagem (ex: Aiden)">
+    </div>
+
+    <!-- Sexo -->
+    <div class="question">
+        <label for="gender">Sexo do Personagem:</label>
+        <select id="gender">
+            <option value="male">Masculino</option>
+            <option value="female">Feminino</option>
+            <option value="non-binary">Não Binário</option>
+        </select>
+        <textarea id="genderExtra" rows="2" placeholder="Detalhes adicionais sobre o sexo do personagem..."></textarea>
+    </div>
+
+    <!-- Descrição Física com múltiplas opções e campo de texto -->
+    <div class="question">
+        <label>Descrição Física do Personagem:</label>
+        
+        <div class="question">
+            <label for="age">Idade:</label>
+            <select id="age">
+                <option value="15">15 anos</option>
+                <option value="20">20 anos</option>
+                <option value="25">25 anos</option>
+                <option value="30">30 anos</option>
+            </select>
+            <textarea id="ageExtra" rows="2" placeholder="Mais detalhes sobre a idade..."></textarea>
+        </div>
+
+        <div class="question">
+            <label for="hair">Cor e Tipo de Cabelo:</label>
+            <select id="hair">
+                <option value="brown and short">Castanho e curto</option>
+                <option value="blonde and wavy">Loiro e ondulado</option>
+                <option value="black and straight">Preto e liso</option>
+                <option value="red and curly">Ruivo e encaracolado</option>
+            </select>
+            <textarea id="hairExtra" rows="2" placeholder="Mais detalhes sobre o cabelo..."></textarea>
+        </div>
+
+        <div class="question">
+            <label for="eyes">Cor dos Olhos:</label>
+            <select id="eyes">
+                <option value="green">Verdes</option>
+                <option value="blue">Azuis</option>
+                <option value="brown">Castanhos</option>
+                <option value="hazel">Avelã</option>
+            </select>
+            <textarea id="eyesExtra" rows="2" placeholder="Mais detalhes sobre os olhos..."></textarea>
+        </div>
+
+        <div class="question">
+            <label for="body">Complexão Física:</label>
+            <select id="body">
+                <option value="athletic">Atlético</option>
+                <option value="slim">Magro</option>
+                <option value="average">Médio</option>
+                <option value="muscular">Musculoso</option>
+            </select>
+            <textarea id="bodyExtra" rows="2" placeholder="Mais detalhes sobre a complexão física..."></textarea>
+        </div>
+
+        <div class="question">
+            <label for="height">Altura:</label>
+            <select id="height">
+                <option value="short">Baixo</option>
+                <option value="average">Médio</option>
+                <option value="tall">Alto</option>
+            </select>
+            <textarea id="heightExtra" rows="2" placeholder="Mais detalhes sobre a altura..."></textarea>
+        </div>
+
+        <textarea id="appearanceExtra" rows="3" placeholder="Detalhes adicionais sobre a aparência (cicatrizes, tatuagens, etc.)..."></textarea>
+    </div>
+
+    <!-- Ambiente/Contexto -->
+    <div class="question">
+        <label for="environment">Ambiente/Contexto:</label>
+        <select id="environment">
+            <option value="a suburban park in autumn, with orange and red leaves scattered on the ground">Parque Suburbano durante o Outono</option>
+            <option value="a futuristic city with neon lights">Cidade Futurista com Luzes Néon</option>
+            <option value="a medieval castle at sunset">Castelo Medieval ao Pôr-do-Sol</option>
+            <option value="a beach at sunrise, with calm waves">Praia ao Amanhecer com Ondas Tranquilas</option>
+            <option value="a bustling marketplace in an exotic city">Mercado Movimentado numa Cidade Exótica</option>
+        </select>
+        <textarea id="environmentExtra" rows="2" placeholder="Mais detalhes sobre o ambiente/contexto..."></textarea>
+    </div>
+
+    <!-- Cores e Iluminação -->
+    <div class="question">
+        <label for="colorLighting">Cores e Iluminação:</label>
+        <select id="colorLighting">
+            <option value="with warm, golden light dominating the scene">Luz Quente e Dourada</option>
+            <option value="with cool, blue tones and soft shadows">Tons Frios com Sombras Suaves</option>
+            <option value="with dramatic, high contrast lighting, casting sharp shadows">Iluminação Dramática com Sombras Marcadas</option>
+            <option value="with a soft, pastel color palette">Paleta de Cores Pastel Suave</option>
+            <option value="with vibrant, saturated colors">Cores Vibrantes e Saturadas</option>
+        </select>
+        <textarea id="colorLightingExtra" rows="2" placeholder="Mais detalhes sobre cores e iluminação..."></textarea>
+    </div>
+
+    <!-- Ação/Situação -->
+    <div class="question">
+        <label for="action">Ação/Situação:</label>
+        <select id="action">
+            <option value="walking through the park, casually kicking leaves and smiling">A andar pelo parque, chutando folhas e sorrindo</option>
+            <option value="standing on top of a skyscraper, looking out over the city with a determined expression">Em cima de um arranha-céus, olhando para a cidade com uma expressão determinada</option>
+            <option value="sitting on the beach, gazing at the sunrise with a peaceful look">Sentado na praia, observando o amanhecer com um olhar sereno</option>
+            <option value="in a busy market, interacting with a vendor while smiling">Num mercado movimentado, interagindo com um vendedor e sorrindo</option>
+            <option value="exploring the halls of a medieval castle, holding a torch">A explorar os corredores de um castelo medieval, segurando uma tocha</option>
+        </select>
+        <textarea id="actionExtra" rows="2" placeholder="Mais detalhes sobre a ação/situação..."></textarea>
+    </div>
+
+    <!-- Proporções e Perspectiva -->
+    <div class="question">
+        <label for="proportions">Proporções e Perspectiva:</label>
+        <select id="proportions">
+            <option value="with natural, realistic proportions and an eye-level perspective">Proporções naturais e realistas, com perspectiva ao nível dos olhos</option>
+            <option value="with exaggerated, cartoonish proportions, viewed from a low angle">Proporções exageradas e cartunescas, visto de um ângulo baixo</option>
+            <option value="with dynamic, action-oriented perspective, from a high angle">Perspectiva dinâmica e orientada para a ação, vista de um ângulo elevado</option>
+        </select>
+        <textarea id="proportionsExtra" rows="2" placeholder="Mais detalhes sobre proporções e perspectiva..."></textarea>
+    </div>
+
+    <!-- Posicionamento da Câmara -->
+    <div class="question">
+        <label for="cameraPosition">Posicionamento da Câmara:</label>
         <select id="cameraPosition">
-            <option value="close-up">Close-up</option>
-            <option value="medium-shot">Medium Shot</option>
-            <option value="wide-shot">Wide Shot</option>
+            <option value="eye-level">Ao nível dos olhos</option>
+            <option value="low angle">Ângulo baixo</option>
+            <option value="high angle">Ângulo elevado</option>
+            <option value="wide shot">Plano geral</option>
         </select>
-        <textarea id="cameraCustomPosition" placeholder="Descrição personalizada..."></textarea>
+        <textarea id="cameraPositionExtra" rows="2" placeholder="Mais detalhes sobre o posicionamento da câmara..."></textarea>
+    </div>
 
-        <label for="cameraMovement">Movimento de Câmara:</label>
+    <!-- Movimento da Câmara (apenas para vídeos) -->
+    <div class="question">
+        <label for="cameraMovement">Movimento da Câmara (apenas para vídeos):</label>
         <select id="cameraMovement">
-            <option value="pan">Pan</option>
-            <option value="tilt">Tilt</option>
+            <option value="static">Estática</option>
+            <option value="panning">Panorâmica</option>
+            <option value="tracking">Travelling</option>
             <option value="zoom">Zoom</option>
         </select>
-        <textarea id="cameraCustomMovement" placeholder="Descrição personalizada..."></textarea>
-
-        <button id="generatePrompt">Gerar Prompt</button>
+        <textarea id="cameraMovementExtra" rows="2" placeholder="Mais detalhes sobre o movimento da câmara..."></textarea>
     </div>
 
-    <div class="prompt-result">
-        <h2>Prompt Gerado:</h2>
-        <p id="promptOutput"></p>
-    </div>
+    <button onclick="generatePrompt()">Gerar Prompt</button>
+    
+    <div id="result"></div>
+</div>
 
-    <!-- Certifique-se de que o script é carregado no final do corpo -->
-    <script src="script.js"></script>
+<script src="script.js"></script>
+
 </body>
 </html>
