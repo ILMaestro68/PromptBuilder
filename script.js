@@ -4,7 +4,7 @@ document.getElementById("fetchData").addEventListener("click", async function() 
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": "Bearer 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"  // Substitua pela sua chave correta
+                "Authorization": "Bearer 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"  // Substitua pela chave correta
             },
             body: JSON.stringify({
                 model: "text-davinci-003",
@@ -19,7 +19,7 @@ document.getElementById("fetchData").addEventListener("click", async function() 
 
         const data = await response.json();
 
-        // Verifique se a resposta contém a propriedade 'choices'
+        // Verificar se a resposta contém o objeto 'choices'
         if (data && data.choices && data.choices.length > 0) {
             document.getElementById("result").textContent = data.choices[0].text;
         } else {
