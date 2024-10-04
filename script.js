@@ -46,9 +46,10 @@ async function generatePrompt() {
         promptPT += `O movimento da câmara é ${cameraMovement}. ${cameraMovementExtra}.`;
     }
 
+   async function generatePrompt() {
     // Exibição do prompt gerado
     document.getElementById("result").innerHTML = `<strong>Prompt Gerado:</strong><br>${promptPT}`;
-    
+
     // Chamada à API OpenAI para melhorar o prompt
     try {
         const aiResponse = await fetch("https://api.openai.com/v1/completions", {
@@ -67,11 +68,23 @@ async function generatePrompt() {
             })
         });
 
-        const aiData = await aiResponse.json();
-        const aiText = aiData.choices[0].text;
+        // Verificar se a resposta HTTP é bem-sucedida
+        if (!aiResponse.ok) {
+            throw new Error(`Erro HTTP: ${aiResponse.status}`);
+        }
 
-        // Exibição da resposta da IA
-        document.getElementById("aiResult").innerHTML = `<strong>Prompt Aprimorado pela IA:</strong><br>${aiText}`;
+        // Processar a resposta da API
+        const aiData = await aiResponse.json();
+        
+        // Verificar se há escolhas válidas na resposta
+        if (aiData.choices && aiData.choices.length > 0) {
+            const aiText = aiData.choices[0].text;
+
+            // Exibição da resposta da IA
+            document.getElementById("aiResult").innerHTML = `<strong>Prompt Aprimorado pela IA:</strong><br>${aiText}`;
+        } else {
+            throw new Error("A resposta da API não contém escolhas válidas.");
+        }
 
     } catch (error) {
         console.error("Erro ao chamar a API OpenAI:", error);
