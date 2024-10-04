@@ -46,7 +46,7 @@ async function generatePrompt() {
         promptPT += `O movimento da câmara é ${cameraMovement}. ${cameraMovementExtra}.`;
     }
 
-   async function generatePrompt() {
+ async function generatePrompt() {
     // Exibição do prompt gerado
     document.getElementById("result").innerHTML = `<strong>Prompt Gerado:</strong><br>${promptPT}`;
 
