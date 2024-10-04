@@ -14,7 +14,7 @@ document.getElementById("fetchData").addEventListener("click", async function() 
         });
 
         const data = await response.json();
-        document.getElementById("result").textContent = data.choices[0].text;  // Exibe a resposta da API
+        document.getElementById("result").textContent = data.choices[0].text;  // Exibe o texto gerado pela API
     } catch (error) {
         document.getElementById("result").textContent = "Ocorreu um erro ao chamar a API.";
         console.error("Erro:", error);
