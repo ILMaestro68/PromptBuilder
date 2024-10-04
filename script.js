@@ -55,7 +55,7 @@ async function generatePrompt() {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": "Bearer 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"
+                "Authorization": "Bearer sk-d5EY8hoQcoHCjN_-6bSj9CS1A5Wnoowfp1idZ_MuoiT3BlbkFJnkrx2OEF2W3tSEp7OAQxSXhHewjZ4Fh9yMTHFPLKEA"
             },
             body: JSON.stringify({
                 model: "text-davinci-003",
