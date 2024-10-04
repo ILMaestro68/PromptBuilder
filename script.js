@@ -4,7 +4,7 @@ document.getElementById("fetchData").addEventListener("click", async function() 
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": "Bearer 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"  // Substitua pela chave correta
+                "Authorization": "Bearer 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"
             },
             body: JSON.stringify({
                 model: "text-davinci-003",
@@ -13,13 +13,14 @@ document.getElementById("fetchData").addEventListener("click", async function() 
             })
         });
 
+        console.log("Resposta da API:", response);
+
         if (!response.ok) {
             throw new Error(`Erro na API: ${response.status} ${response.statusText}`);
         }
 
         const data = await response.json();
 
-        // Verificar se a resposta contém o objeto 'choices'
         if (data && data.choices && data.choices.length > 0) {
             document.getElementById("result").textContent = data.choices[0].text;
         } else {
