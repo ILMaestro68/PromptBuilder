@@ -4,8 +4,7 @@ document.getElementById("fetchData").addEventListener("click", async function() 
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": "proj-7UrleDFJJAOM0DtprziTb9Jb21s_Tytz1qwLAsCXX2WKNZKmUvm8Y96OfIEMmlDmuiNZhWhqu1T3BlbkFJmt29TjfrezR9MgOVuw790AGdhgUSC7kIJeKpmK8ZSIVYmFlua6M_1u1zsNRk1vH2RJtTygfYkA
-" // Substitua pela sua chave da API
+                "Authorization": "Bearer proj-7UrleDFJJAOM0DtprziTb9Jb21s_Tytz1qwLAsCXX2WKNZKmUvm8Y96OfIEMmlDmuiNZhWhqu1T3BlbkFJmt29TjfrezR9MgOVuw790AGdhgUSC7kIJeKpmK8ZSIVYmFlua6M_1u1zsNRk1vH2RJtTygfYkA"  // Sua chave API
             },
             body: JSON.stringify({
                 model: "text-davinci-003",
