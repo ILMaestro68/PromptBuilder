@@ -1,54 +1,29 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
-}
+document.getElementById("generatePrompt").addEventListener("click", function() {
+    const characterDescription = document.getElementById("characterDescription").value;
+    const characterCustomDescription = document.getElementById("characterCustomDescription").value;
 
-h1 {
-    text-align: center;
-    color: #333;
-}
+    const cameraPosition = document.getElementById("cameraPosition").value;
+    const cameraCustomPosition = document.getElementById("cameraCustomPosition").value;
 
-.prompt-form {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+    const cameraMovement = document.getElementById("cameraMovement").value;
+    const cameraCustomMovement = document.getElementById("cameraCustomMovement").value;
 
-.prompt-form label {
-    display: block;
-    margin-top: 10px;
-    font-weight: bold;
-}
+    // Geração do Prompt
+    let prompt = `Descrição Física: ${characterDescription}. `;
+    if (characterCustomDescription) {
+        prompt += `Detalhe Personalizado: ${characterCustomDescription}. `;
+    }
 
-.prompt-form select, .prompt-form textarea, .prompt-form button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 20px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-}
+    prompt += `Posição da Câmara: ${cameraPosition}. `;
+    if (cameraCustomPosition) {
+        prompt += `Detalhe Personalizado: ${cameraCustomPosition}. `;
+    }
 
-textarea {
-    height: 60px;
-}
+    prompt += `Movimento de Câmara: ${cameraMovement}. `;
+    if (cameraCustomMovement) {
+        prompt += `Detalhe Personalizado: ${cameraCustomMovement}. `;
+    }
 
-.prompt-result {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.prompt-result p {
-    font-size: 18px;
-    color: #333;
-}
+    // Exibir o Prompt Gerado
+    document.getElementById("promptOutput").textContent = prompt;
+});
