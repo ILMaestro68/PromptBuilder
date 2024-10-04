@@ -3,14 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teste de API com JSONPlaceholder</title>
+    <title>Gerador de Prompts</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Teste de API</h1>
-    <p>Clique no botão abaixo para fazer uma chamada à API de teste.</p>
-    <button id="fetchData">Clique-me para chamar a API</button>
-    <div id="result"></div>
+    <h1>Gerador de Prompts</h1>
+
+    <div class="prompt-form">
+        <label for="characterDescription">Descrição Física da Personagem:</label>
+        <select id="characterDescription">
+            <option value="alto">Alto</option>
+            <option value="baixo">Baixo</option>
+            <option value="atlético">Atlético</option>
+            <option value="robusto">Robusto</option>
+        </select>
+        <textarea id="characterCustomDescription" placeholder="Descrição personalizada..."></textarea>
+
+        <label for="cameraPosition">Posição da Câmara:</label>
+        <select id="cameraPosition">
+            <option value="close-up">Close-up</option>
+            <option value="medium-shot">Medium Shot</option>
+            <option value="wide-shot">Wide Shot</option>
+        </select>
+        <textarea id="cameraCustomPosition" placeholder="Descrição personalizada..."></textarea>
+
+        <label for="cameraMovement">Movimento de Câmara:</label>
+        <select id="cameraMovement">
+            <option value="pan">Pan</option>
+            <option value="tilt">Tilt</option>
+            <option value="zoom">Zoom</option>
+        </select>
+        <textarea id="cameraCustomMovement" placeholder="Descrição personalizada..."></textarea>
+
+        <button id="generatePrompt">Gerar Prompt</button>
+    </div>
+
+    <div class="prompt-result">
+        <h2>Prompt Gerado:</h2>
+        <p id="promptOutput"></p>
+    </div>
 
     <script src="script.js"></script>
 </body>
