@@ -1,3 +1,9 @@
+document.addEventListener("DOMContentLoaded", function() {
+    // Quando a página estiver totalmente carregada, adicionamos o evento ao botão
+    const generateBtn = document.getElementById("generateBtn");
+    generateBtn.addEventListener("click", generatePrompt);
+});
+
 async function generatePrompt() {
     // Pegar os valores do formulário
     var mediaType = document.getElementById("mediaType").value;
