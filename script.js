@@ -1,33 +1,54 @@
-document.getElementById("fetchData").addEventListener("click", async function() {
-    try {
-        const response = await fetch("https://api.openai.com/v1/completions", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer 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"
-            },
-            body: JSON.stringify({
-                model: "text-davinci-003",
-                prompt: "Escreva um texto criativo para uma página de web",
-                max_tokens: 100
-            })
-        });
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
 
-        console.log("Resposta da API:", response);
+h1 {
+    text-align: center;
+    color: #333;
+}
 
-        if (!response.ok) {
-            throw new Error(`Erro na API: ${response.status} ${response.statusText}`);
-        }
+.prompt-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-        const data = await response.json();
+.prompt-form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
 
-        if (data && data.choices && data.choices.length > 0) {
-            document.getElementById("result").textContent = data.choices[0].text;
-        } else {
-            document.getElementById("result").textContent = "Nenhum resultado foi retornado pela API.";
-        }
-    } catch (error) {
-        document.getElementById("result").textContent = "Ocorreu um erro ao chamar a API. Verifique o console para mais detalhes.";
-        console.error("Erro:", error);
-    }
-});
+.prompt-form select, .prompt-form textarea, .prompt-form button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+textarea {
+    height: 60px;
+}
+
+.prompt-result {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.prompt-result p {
+    font-size: 18px;
+    color: #333;
+}
