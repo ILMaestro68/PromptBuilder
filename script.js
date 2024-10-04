@@ -1,4 +1,4 @@
-function generatePrompt() {
+async function generatePrompt() {
     var mediaType = document.getElementById("mediaType").value;
     var mediaTypeExtra = document.getElementById("mediaTypeExtra").value;
     var visualStyle = document.getElementById("visualStyle").value;
@@ -46,19 +46,35 @@ function generatePrompt() {
         promptPT += `O movimento da câmara é ${cameraMovement}. ${cameraMovementExtra}.`;
     }
 
-    // Criação do prompt em Inglês
-    var promptEN = `Create a detailed ${mediaType} of ${character}, gender ${gender} (${genderExtra}), aged ${age} (${ageExtra}). `;
-    promptEN += `They have ${hair} hair (${hairExtra}) and ${eyes} eyes (${eyesExtra}). `;
-    promptEN += `The body type is ${body} (${bodyExtra}), height is ${height} (${heightExtra}). ${appearanceExtra}. `;
-    promptEN += `The style should be ${visualStyle}. ${visualStyleExtra}. `;
-    promptEN += `The setting is ${environment}, ${colorLighting}. `;
-    promptEN += `${character} is ${action}. `;
-    promptEN += `The image should be ${proportions}. ${proportionsExtra}. `;
-    promptEN += `Camera is positioned ${cameraPosition}. ${cameraPositionExtra}. `;
-    if(mediaType === "short video") {
-        promptEN += `The camera movement is ${cameraMovement}. ${cameraMovementExtra}.`;
-    }
+    // Exibição do prompt gerado
+    document.getElementById("result").innerHTML = `<strong>Prompt Gerado:</strong><br>${promptPT}`;
     
-    // Exibição do resultado
-    document.getElementById("result").innerHTML = `<strong>Prompt em Português:</strong><br>${promptPT}<br><br><strong>Prompt em Inglês:</strong><br>${promptEN}`;
+    // Chamada à API OpenAI para melhorar o prompt
+    try {
+        const aiResponse = await fetch("https://api.openai.com/v1/completions", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer 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"
+            },
+            body: JSON.stringify({
+                model: "text-davinci-003",
+                prompt: promptPT,
+                max_tokens: 150,
+                n: 1,
+                stop: null,
+                temperature: 0.7
+            })
+        });
+
+        const aiData = await aiResponse.json();
+        const aiText = aiData.choices[0].text;
+
+        // Exibição da resposta da IA
+        document.getElementById("aiResult").innerHTML = `<strong>Prompt Aprimorado pela IA:</strong><br>${aiText}`;
+
+    } catch (error) {
+        console.error("Erro ao chamar a API OpenAI:", error);
+        document.getElementById("aiResult").innerHTML = "<strong>Erro:</strong> Não foi possível aprimorar o prompt.";
+    }
 }
