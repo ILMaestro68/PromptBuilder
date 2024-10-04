@@ -52,15 +52,15 @@ async function generatePrompt() {
 
     // Chamada à API OpenAI para melhorar o prompt
     try {
-        const aiResponse = await fetch("https://api.openai.com/v1/completions", {
+        const aiResponse = await fetch("https://api.openai.com/v1/chat/completions", {  // URL modificada para GPT-3.5-Turbo
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": "Bearer sk-d5EY8hoQcoHCjN_-6bSj9CS1A5Wnoowfp1idZ_MuoiT3BlbkFJnkrx2OEF2W3tSEp7OAQxSXhHewjZ4Fh9yMTHFPLKEA"
             },
             body: JSON.stringify({
-                model: "text-davinci-003",
-                prompt: promptPT,
+                model: "gpt-3.5-turbo",  // Mudança para gpt-3.5-turbo
+                messages: [{"role": "user", "content": promptPT}],  // Modificado para "messages" em vez de "prompt"
                 max_tokens: 150,
                 n: 1,
                 stop: null,
@@ -75,12 +75,10 @@ async function generatePrompt() {
 
         // Processar a resposta da API
         const aiData = await aiResponse.json();
-        
+
         // Verificar se há escolhas válidas na resposta
         if (aiData.choices && aiData.choices.length > 0) {
-            const aiText = aiData.choices[0].text;
-
-            // Exibição da resposta da IA
+            const aiText = aiData.choices[0].message.content;  // Ajustado para o novo formato de resposta
             document.getElementById("aiResult").innerHTML = `<strong>Prompt Aprimorado pela IA:</strong><br>${aiText}`;
         } else {
             throw new Error("A resposta da API não contém escolhas válidas.");
